@@ -1,0 +1,12 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "GPL-v3"
+
+[[mods]]
+modId = "dimtpcmd"
+version = "${version}"
+displayName = "DimtpCommand"
+authors = "TeamPotato"
+description = '''
+A Minecraft mod.
+'''
