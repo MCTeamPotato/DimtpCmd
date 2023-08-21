@@ -23,11 +23,11 @@ public class DimtpCmd {
     }
 
     @SubscribeEvent
-    public static void onRegisterCmd(RegisterCommandsEvent event) {
+    public void onRegisterCmd(RegisterCommandsEvent event) {
         event.getDispatcher().register(LiteralArgumentBuilder.<CommandSourceStack>literal("dimtp")
                 .requires(player -> player.hasPermission(2))
                 .then(
-                        RequiredArgumentBuilder.<CommandSourceStack, ResourceLocation>argument("targetDimension", DimensionArgument.dimension())
+                        RequiredArgumentBuilder.<CommandSourceStack, ResourceLocation>argument("dimension", DimensionArgument.dimension())
                                 .executes(context -> {
                                     ServerPlayer player = context.getSource().getPlayerOrException();
                                     Vec3 pos = player.position();
@@ -35,7 +35,7 @@ public class DimtpCmd {
                                     return 1;
                                 })
                                 .then(
-                                        RequiredArgumentBuilder.<CommandSourceStack, Coordinates>argument("targetPosition", Vec3Argument.vec3())
+                                        RequiredArgumentBuilder.<CommandSourceStack, Coordinates>argument("position", Vec3Argument.vec3())
                                                 .executes(context -> {
                                                     ServerPlayer player = context.getSource().getPlayerOrException();
                                                     Vec3 pos = Vec3Argument.getVec3(context, "position");
